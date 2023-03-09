@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {TextInput, View, StyleSheet, ScrollView, Text} from 'react-native';
 
 import {CustomSwitch} from '../components/CustomSwitch';
@@ -6,6 +6,7 @@ import {HeaderTitle} from '../components/HeaderTitle';
 import {styles} from '../theme/appTheme';
 import {stylesSwitch} from './SwitchScreen';
 import {useForm} from '../hooks/useForm';
+import {ThemeContext} from '../context/themeContext/ThemeContext';
 
 export const TextInputScreen = () => {
   const {onChange, form, isSuscribe} = useForm({
@@ -15,27 +16,46 @@ export const TextInputScreen = () => {
     isSuscribe: false,
   });
 
+  const {
+    theme: {colors},
+  } = useContext(ThemeContext);
+
   return (
     <ScrollView>
       <View style={styles.containerApp}>
         <HeaderTitle title="TextInputScreen" />
         <TextInput
-          style={style.textInput}
+          style={{
+            ...style.textInput,
+            color: colors.text,
+            borderColor: colors.text,
+          }}
           placeholder="ingrese su nombre"
           autoCorrect={false}
           autoCapitalize="words"
+          placeholderTextColor={colors.text}
           onChangeText={value => onChange(value, 'name')}
         />
         <TextInput
-          style={style.textInput}
+          style={{
+            ...style.textInput,
+            color: colors.text,
+            borderColor: colors.text,
+          }}
           placeholder="ingrese su email"
+          placeholderTextColor={colors.text}
           autoCorrect={false}
           autoCapitalize={'none'}
           onChangeText={value => onChange(value, 'email')}
           keyboardType="email-address"
         />
         <TextInput
-          style={style.textInput}
+          placeholderTextColor={colors.text}
+          style={{
+            ...style.textInput,
+            color: colors.text,
+            borderColor: colors.text,
+          }}
           placeholder="ingrese su teléfono"
           onChangeText={value => onChange(value, 'phone')}
           keyboardType="number-pad"

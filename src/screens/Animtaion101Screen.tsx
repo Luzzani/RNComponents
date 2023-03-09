@@ -1,9 +1,19 @@
 import React from 'react';
-import {Animated, Button, StyleSheet, View} from 'react-native';
+import {Animated, StyleSheet, View} from 'react-native';
 import {useAnimation} from '../hooks/useAnimation';
+import TouchableButton from '../components/TouchableButton';
 
 export const Animtaion101Screen = () => {
   const {fadeIn, fadeOut, opacity, startPosition, position} = useAnimation();
+
+  const animationIn = () => {
+    startPosition(-300, 800, true);
+    fadeIn();
+  };
+
+  const animationOut = () => {
+    fadeOut();
+  };
 
   return (
     <View style={styles.container}>
@@ -14,14 +24,9 @@ export const Animtaion101Screen = () => {
           transform: [{translateY: position}],
         }}
       />
-      <Button
-        title="Fade In"
-        onPress={() => {
-          fadeIn();
-          startPosition(-300, 800, true);
-        }}
-      />
-      <Button title="Fade Out" onPress={fadeOut} />
+
+      <TouchableButton callback={animationIn} text={'Fade in'} />
+      <TouchableButton callback={animationOut} text={'Fade out'} />
     </View>
   );
 };

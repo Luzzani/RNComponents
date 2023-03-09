@@ -1,3 +1,4 @@
+import {ImageSourcePropType} from 'react-native';
 import {MenuItem} from '../interfaces/menuItemInterface';
 
 export const menuItem: MenuItem[] = [
@@ -45,6 +46,16 @@ export const menuItem: MenuItem[] = [
     name: 'Infinite Scroll',
     icon: 'download-outline',
     component: 'InfiniteScrollScreen',
+  },
+  {
+    name: 'Slides',
+    icon: 'flower-outline',
+    component: 'SlidesScreen',
+  },
+  {
+    name: 'Change theme',
+    icon: 'flask-outline',
+    component: 'ChangeThemeScreen',
   },
 ];
 
@@ -128,5 +139,29 @@ export const casas: Casas[] = [
       'Goku',
       'Saitama',
     ],
+  },
+];
+
+export interface Slide {
+  title: string;
+  desc: string;
+  img: ImageSourcePropType;
+}
+
+export const items: Slide[] = [
+  {
+    title: 'Titulo 1',
+    desc: 'Ea et eu enim fugiat sunt reprehenderit sunt aute quis tempor ipsum cupidatat et.',
+    img: require('../assets/slide-1.png'),
+  },
+  {
+    title: 'Titulo 2',
+    desc: 'Anim est quis elit proident magna quis cupidatat culpa labore Lorem ea. Exercitation mollit velit in aliquip tempor occaecat dolor minim amet dolor enim cillum excepteur. ',
+    img: require('../assets/slide-2.png'),
+  },
+  {
+    title: 'Titulo 3',
+    desc: 'Ex amet duis amet nulla. Aliquip ea Lorem ea culpa consequat proident. Nulla tempor esse ad tempor sit amet Lorem. Velit ea labore aute pariatur commodo duis veniam enim.',
+    img: require('../assets/slide-3.png'),
   },
 ];

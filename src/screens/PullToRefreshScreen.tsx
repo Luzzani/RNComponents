@@ -1,12 +1,16 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {ScrollView, RefreshControl} from 'react-native-gesture-handler';
 import {HeaderTitle} from '../components/HeaderTitle';
+import {ThemeContext} from '../context/themeContext/ThemeContext';
 import {styles} from '../theme/appTheme';
 
 export const PullToRefreshScreen = () => {
   const [refreshing, setRefreshing] = useState(false);
   const [data, setData] = useState<string>();
+  const {
+    theme: {colors},
+  } = useContext(ThemeContext);
 
   const onRefresh = () => {
     setRefreshing(true);
@@ -32,7 +36,7 @@ export const PullToRefreshScreen = () => {
       }>
       <View style={styles.containerApp}>
         <HeaderTitle title="Pull to refresh" />
-        <Text>{data}</Text>
+        <Text style={{color: colors.text}}>{data}</Text>
       </View>
     </ScrollView>
   );

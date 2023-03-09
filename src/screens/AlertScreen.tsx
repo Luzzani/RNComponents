@@ -1,9 +1,10 @@
 import React from 'react';
-import {View, Button, Alert, StyleSheet} from 'react-native';
+import {View, Alert, StyleSheet} from 'react-native';
 
 import prompt from 'react-native-prompt-android';
 
 import {HeaderTitle} from '../components/HeaderTitle';
+import TouchableButton from '../components/TouchableButton';
 import {styles} from '../theme/appTheme';
 
 const showPrompt = () => {
@@ -66,11 +67,11 @@ export const AlertScreen = () => {
     <View style={styles.containerApp}>
       <HeaderTitle title="Alerts" />
 
-      <Button title="Mostrar Alerta" onPress={showAlert} />
+      <TouchableButton callback={showAlert} text="Mostrar Alerta" />
 
       <View style={style.separetor} />
 
-      <Button title="Mostrar Prompt" onPress={showPrompt} />
+      <TouchableButton callback={showPrompt} text="Mostrar Prompt" />
     </View>
   );
 };
